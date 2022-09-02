@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"punsh/utils"
 	"strings"
 	"time"
 )
@@ -90,9 +91,11 @@ func operation(c string) {
 
 	byte, _ := io.ReadAll(resp.Body)
 	fmt.Println(string(byte))
+	utils.Feishu(string(byte))
 }
 
 func main() {
+	utils.Feishu("开始打卡")
 	getC()
 	str, err := os.ReadFile("1.txt")
 	if err != nil {
